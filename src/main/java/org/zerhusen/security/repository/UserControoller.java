@@ -5,6 +5,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.zerhusen.model.security.Authority;
+import org.zerhusen.model.security.History;
 import org.zerhusen.model.security.User;
 import org.zerhusen.security.JwtUser;
 import org.zerhusen.security.JwtUserFactory;
@@ -22,30 +23,20 @@ public class UserControoller {
     EntityManager em;
 
 
-    public void saveUser(User user) {
+    public void saveHisory(History history) {
 
-        if (user.getId() == null) {
-            em.persist(user);
+        if (history.getId() == null) {
+            em.persist(history);
         } else {
-            em.merge(user);
+            em.merge(history);
         }
 
     }
 
-
-    public User findById(Long id) {
-        return em.find(User.class, id);
+    public History findById(Long id) {
+        return em.find(History.class, id);
     }
 
-//    public User findByUsername(String username) {
-////        Object obj = em.createNativeQuery("SELECT * FROM User WHERE username = " + username).getSingleResult();
-//        Query query = em.getCriteriaBuilder().createQuery("from User u where u.username=:username").;
-//        query.setParameter("username",username);
-//        User user = (User) ;
-//        return user;
-//    }
-//    public User findByUsername(String name) {
-//
-//        Query query query="SELECT c FROM User c WHERE c.username = username"
-//    }
+
+
 }

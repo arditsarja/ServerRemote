@@ -42,6 +42,20 @@ public class StudentController {
         }
 
         return new ResponseEntity<>("locked", HttpStatus.OK);
+    }// -------------------Retrieve All Students---------------------------------------------
+    @RequestMapping(value = "/sleep", method = RequestMethod.GET)
+    public ResponseEntity<?> spleep() {
+
+        if (TypeOfServer.isWindows) {
+            try {
+
+                Runtime.getRuntime().exec("Rundll32.exe powrprof.dll,SetSuspendState Sleep");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return new ResponseEntity<>("locked", HttpStatus.OK);
     }
 
     @RequestMapping(value = "/shutdown", method = RequestMethod.GET)

@@ -7,12 +7,12 @@ public class TypeOfServer {
     public static final int LINUX = 2;
     public static final int MAC = 3;
 
-    public static int osType = OTHER;
+    private static int osType = OTHER;
 
-    public static boolean isOther = false;
-    public static boolean isWindows = false;
-    public static boolean isLinux = false;
-    public static boolean isMac = false;
+    private static boolean isOther = false;
+    private static boolean isWindows = false;
+    private static boolean isLinux = false;
+    private static boolean isMac = false;
 
     public static final String os = System.getProperty("os.name").toLowerCase();
 
@@ -29,6 +29,29 @@ public class TypeOfServer {
         } else {
             isOther = true;
         }
+    }
+
+    public static int osType() {
+        return osType;
+    }
+
+    public static boolean isOther() {
+        return isOther;
+    }
+
+    public static boolean isWindows() {
+        return isWindows;
+    }
+
+
+    public static boolean isLinux() {
+        return isLinux;
+    }
+
+
+
+    public static boolean isMac() {
+        return isMac;
     }
 
 

@@ -33,7 +33,7 @@ public class StudentController {
     @RequestMapping(value = "/lock", method = RequestMethod.GET)
     public ResponseEntity<?> lock() {
 
-        if (TypeOfServer.isWindows) {
+        if (TypeOfServer.isWindows()) {
             try {
                 Runtime.getRuntime().exec("C:\\Windows\\System32\\rundll32.exe user32.dll,LockWorkStation");
             } catch (IOException e) {
@@ -46,7 +46,7 @@ public class StudentController {
     @RequestMapping(value = "/sleep", method = RequestMethod.GET)
     public ResponseEntity<?> spleep() {
 
-        if (TypeOfServer.isWindows) {
+        if (TypeOfServer.isWindows()) {
             try {
 
                 Runtime.getRuntime().exec("Rundll32.exe powrprof.dll,SetSuspendState Sleep");
@@ -63,10 +63,10 @@ public class StudentController {
 
         String shutdownCommand;
 
-        if (TypeOfServer.isLinux || TypeOfServer.isMac) {
+        if (TypeOfServer.isLinux() || TypeOfServer.isMac()) {
             shutdownCommand = "shutdown -h now";
 
-        } else if (TypeOfServer.isWindows) {
+        } else if (TypeOfServer.isWindows()) {
             shutdownCommand = "shutdown.exe -s -t 0";
         } else {
             return new ResponseEntity<>("Usuportet OS", HttpStatus.INTERNAL_SERVER_ERROR);
